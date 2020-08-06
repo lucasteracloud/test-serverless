@@ -1,19 +1,8 @@
 version: 0.2
 
-#env:
-  #variables:
-     # key: "value"
-     # key: "value"
-  #parameter-store:
-     # key: "value"
-     # key: "value"
-  #secrets-manager:
-     # key: secret-id:json-key:version-stage:version-id
-     # key: secret-id:json-key:version-stage:version-id
-  #exported-variables:
-     # - variable
-     # - variable
-  #git-credential-helper: yes
+env:
+  parameter-store:
+    ssh_key: "/lucas_ssh_key"
 
 phases:
   install:
@@ -28,6 +17,10 @@ phases:
     #  - sudo yum install -y nodejs
       - npm install -g serverless
       - npm install serverless-import-apigateway --save-dev
+      - echo "$ssh_key" > ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/id_rsa
+      - eval `ssh-agent`
+      - ssh-add  ~/.ssh/id_rsa
       - git clone git@github.com:lucasteracloud/test-serverless.git
   
   pre_build:
