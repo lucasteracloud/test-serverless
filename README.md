@@ -1,2 +1,2 @@
 # test-serverless
-used to test serverless framework deployment
+used to test serverless framework deployment.
