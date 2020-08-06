@@ -1,0 +1,34 @@
+service: past-tense
+provider:
+  name: aws
+  runtime: python3.8
+  region: us-west-2
+
+# Run this "npm install serverless-import-apigateway --save-dev" in buildspec.yml to install the plugin
+# https://www.serverless.com/plugins/serverless-import-apigateway
+plugins:
+  - serverless-import-apigateway
+
+custom:
+  importApiGateway:
+    name: test-serverless  # Required
+    path: /                                        # Optional
+#    resources:                                     # Optional
+#      - /existing
+
+functions:
+  index:
+    handler: handler.past_tense
+    events:
+      - http: GET past_tense
+
+  test2:
+    handler: test.hello
+    events:
+      - http:
+          method: GET
+          path: /test
+          request:
+            parameters:
+              querystrings:
+                sentence: true

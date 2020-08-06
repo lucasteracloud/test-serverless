@@ -1,0 +1,40 @@
+version: 0.2
+
+#env:
+  #variables:
+     # key: "value"
+     # key: "value"
+  #parameter-store:
+     # key: "value"
+     # key: "value"
+  #secrets-manager:
+     # key: secret-id:json-key:version-stage:version-id
+     # key: secret-id:json-key:version-stage:version-id
+  #exported-variables:
+     # - variable
+     # - variable
+  #git-credential-helper: yes
+
+phases:
+  install:
+    #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
+    #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
+    runtime-versions:
+      python: 3.8
+      # name: version
+    commands:
+      - yum install -y gcc-c++ make
+      - curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
+      - sudo yum install -y nodejs
+      - npm install -g serverless
+      - npm install serverless-import-apigateway --save-dev
+      - git clone git@github.com:lucasteracloud/test-serverless.git
+  
+  pre_build:
+    commands:
+      - echo "Nothing in pre_build"
+  
+  build:
+    commands:
+      - cd test-serverless
+      - sls deploy --stage api
