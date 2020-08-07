@@ -11,7 +11,7 @@ plugins:
 
 custom:
   importApiGateway:
-    name: test-serverless  # Required
+    name: PetStore  # Required
     path: /                                        # Optional
 #    resources:                                     # Optional
 #      - /existing
