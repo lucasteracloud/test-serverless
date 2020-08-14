@@ -1,6 +1,6 @@
 version: 0.2
 
-env:
+#env:
 #  parameter-store:
 #    ssh_key: "/lucas_ssh_key"
 
