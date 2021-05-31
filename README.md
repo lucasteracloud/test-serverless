@@ -2,3 +2,5 @@
 used to test serverless framework deployment.
 
 # test github action
+hello
+bye
