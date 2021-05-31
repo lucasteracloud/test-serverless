@@ -6,6 +6,7 @@ provider:
 
 # Run this "npm install serverless-import-apigateway --save-dev" in buildspec.yml to install the plugin
 # https://www.serverless.com/plugins/serverless-import-apigateway
+# update
 plugins:
   - serverless-import-apigateway
 
